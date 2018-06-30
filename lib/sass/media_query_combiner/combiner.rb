@@ -32,8 +32,17 @@ module Sass
           ''
         end
 
-        combined = queries.map { |query, body| "#{query}{#{body}}" }.
-          join(("\n\n" if pretty))
+        keys = queries.keys.sort_by do |k|
+          has_dimension = k.match?(/m(in|ax)\-(width|height)/) ? 1 : 0
+          has_min = k.match?('min\-(width|height)') ? 0 : 1
+          v = k.scan(/([0-9]+)px/).flatten.first.to_i || 0
+          [has_dimension, has_min, v]
+        end
+
+        combined = keys.map do |query|
+          body = queries[query]
+          "#{query}{#{body}}"
+        end.join(("\n\n" if pretty))
         "#{filtered_data}#{"\n" if pretty}#{combined}#{source_map_url}\n"
       end
 
