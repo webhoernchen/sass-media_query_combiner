@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sass/media_query_combiner/version'
+require 'sassc/media_query_combiner/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "sass-media_query_combiner"
-  gem.version       = Sass::MediaQueryCombiner::VERSION
+  gem.version       = Sassc::MediaQueryCombiner::VERSION
   gem.authors       = ["Aaron Jensen"]
   gem.email         = ["aaronjensen@gmail.com"]
   gem.description   = %q{Automatically combine media queries}
@@ -20,8 +20,8 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 1.9.2'
 
-  gem.add_runtime_dependency "sass", ">=3.2.0"
+  gem.add_runtime_dependency 'sassc', '>=2.0.0'
 
-  gem.add_development_dependency "rspec"
-  gem.add_development_dependency "rake"
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'rake'
 end

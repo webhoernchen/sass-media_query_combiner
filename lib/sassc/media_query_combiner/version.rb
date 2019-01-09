@@ -1,4 +1,4 @@
-module Sass
+module Sassc
   module MediaQueryCombiner
     VERSION = "0.0.7"
   end
